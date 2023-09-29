@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-# This line already exists
 from pathlib import Path
 
 # Add these 3 lines of code
