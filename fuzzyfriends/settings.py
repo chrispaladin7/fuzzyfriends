@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
-import environ
 
+# Add these 3 lines of code
+import environ
 environ.Env()
 environ.Env.read_env()
 
@@ -89,7 +90,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
