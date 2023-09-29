@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+    >
+      <div class="col-md-3 mb-2 mb-md-0"></div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="{% url 'home' %}" class="nav-link px-2 link-secondary"
+            >Home</a
+          >
+        </li>
+        <li><a href="#" class="nav-link px-2">About</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="#" class="nav-link px-2">Add A Pet</a></li>
+        <li><a href="" class="nav-link px-2">Add A Post</a></li>
+        <li><a href="{% url 'logout' %}" class="nav-link px-2">Log Out</a></li>
+      </ul>
+
+      <div class="col-md-3 text-end">
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          {% else %}
+          <li><a href="{% url 'login' %}" class="nav-link px-2">Login</a></li>
+          <li><a href="" class="nav-link px-2">Sign-up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+  </body>
 </html>
