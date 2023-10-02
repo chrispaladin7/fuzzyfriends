@@ -10,6 +10,8 @@
   <p>Breed: {{ pet.breed }}</p>
   <p>description: {{ pet.description }}</p>
   <p>Profile Picture: <img height="200px" width="200px" src="{{ pet.profile_picture }}" alt="Image is unavailable"> </p>
+  <a href="{% url 'pets_update' pet.id %}">Edit</a>
+  <a href="{% url 'pets_delete' pet.id %}">Delete</a>
 </div>
 <br> <hr>  
 

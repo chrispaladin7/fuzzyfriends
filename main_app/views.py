@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView,CreateView
+from django.views.generic import ListView,CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Pet 
@@ -24,3 +24,13 @@ class PetCreate(LoginRequiredMixin,CreateView):
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
+  
+class PetUpdate(LoginRequiredMixin, UpdateView):
+  model = Pet
+  fields = ['name','type_of_animal','breed','description','profile_picture']
+  success_url = '/pets'
+  
+class PetDelete(LoginRequiredMixin, DeleteView):
+  model = Pet
+  success_url = '/pets'
+
