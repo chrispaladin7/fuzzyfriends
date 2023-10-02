@@ -24,10 +24,10 @@
             >Home</a
           >
         </li>
-        <li><a href="#" class="nav-link px-2">About</a></li>
+        <li><a href="" class="nav-link px-2">About</a></li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'pets_list' %}" class="nav-link px-2">My Pets</a></li>
-        <li><a href="" class="nav-link px-2">Add A Post</a></li>
+        <li><a href="" class="nav-link px-2">My Posts</a></li>
         <li><a href="{% url 'logout' %}" class="nav-link px-2">Log Out</a></li>
       </ul>
 
@@ -35,7 +35,7 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           {% else %}
           <li><a href="{% url 'login' %}" class="nav-link px-2">Login</a></li>
-          <li><a href="" class="nav-link px-2">Sign-up</a></li>
+          <li><a href="{% url 'signup' %}" class="nav-link px-2">Sign-up</a></li>
           {% endif %}
         </ul>
       </div>

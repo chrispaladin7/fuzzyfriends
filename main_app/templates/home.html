@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>Home</h1>
+  <h1>FuzzyFriends</h1>
+  <a href="">Add a Post</a>
+
+  {% for post in posts %}
+  <div>
+    <img height="200px" width="200px" src="{{ post.image }}" alt="Image is unavailable">
+      <p>{{ post.caption }}</p>
+      <p>likes: {{ post.likes }}</p>
+      <p>{{ post.date }}</p>
+  </div>
+  <hr>
+  {% endfor %}
 
   {% endblock %}
