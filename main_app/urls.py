@@ -9,7 +9,7 @@ urlpatterns = [
   path('pets/<int:pk>/update/', views.PetUpdate.as_view(), name='pets_update'),
   path('pets/<int:pk>/delete/', views.PetDelete.as_view(), name='pets_delete'),
   #post
-  
+  path('post/create/', views.PostCreate.as_view(), name='post_create'),
   #signup
   path('accounts/signup/', views.signup, name='signup'),
 ]
