@@ -6,13 +6,7 @@ class PostForPetForm(forms.ModelForm):
         model = Post
         fields = ['pet', 'caption', 'image']
 
-#get back to this
-        def get_form_kwargs(self):
-            kwargs = super().get_form_kwargs()
-            kwargs.update({'request': self.request})
-            return kwargs
-#test
-
     def __init__(self, *args, **kwargs):
+        request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
-        self.fields['pet'].queryset = Pet.objects.filter(user=self.request.user)
+        self.fields['pet'].queryset = Pet.objects.filter(user=request.user)

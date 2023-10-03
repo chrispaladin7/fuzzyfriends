@@ -47,7 +47,10 @@ class PostCreate(LoginRequiredMixin,CreateView):
   form_class = PostForPetForm
   success_url='/'
 
-
+  def get_form_kwargs(self):
+    kwargs = super(PostCreate, self).get_form_kwargs()
+    kwargs.update({'request': self.request})
+    return kwargs
 
   def form_valid(self, form):
     form.instance.user = self.request.user
