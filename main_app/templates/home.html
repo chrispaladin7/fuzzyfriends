@@ -1,16 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>FuzzyFriends</h1>
-  <a href="{% url 'post_create' %}">Add a Post</a>
+<h1>FuzzyFriends</h1>
+<a href="{% url 'post_create' %}">Add a Post</a>
 
-  {% for post in posts %}
-  <div>
-    <img height="200px" width="200px" src="{{ post.image }}" alt="Image is unavailable">
-      <p>{{ post.caption }}</p>
-      <p>likes: {{ post.likes }}</p>
-      <p>{{ post.date }}</p>
-  </div>
-  <hr>
-  {% endfor %}
+{% for post in posts %}
+<div>
+  <img height="200px" width="200px" src="{{ post.image }}" alt="Image is unavailable">
+  <p>{{ post.caption }}</p>
 
-  {% endblock %}
+  {% if user in post.likes.all %}
+  <p>Liked</p>
+  <form action="" method="POST">
+     {% csrf_token %}
+    <button type="submit">heart❤️</button>
+  </form>
+  {% else %}
+  <p>Not Liked</p>
+  <form action="" method="POST">
+    {% csrf_token %}
+    <button type="submit">♡</button>
+  </form>
+  {% endif %}
+  <p>Total Likes: {{post.likes.count}}</p>
+
+  <p>{{ post.date }}</p>
+</div>
+<hr>
+{% endfor %}
+
+{% endblock %}
