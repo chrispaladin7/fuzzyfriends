@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Pet, Post
+from .forms import PostForPetForm
 
 # Create your views here.
 def home(request):
@@ -43,7 +44,7 @@ class PetDelete(LoginRequiredMixin, DeleteView):
 #post controllers
 class PostCreate(LoginRequiredMixin,CreateView):
   model = Post
-  fields = ['image','caption', 'pet']
+  form_class = PostForPetForm
   success_url='/'
 
 
