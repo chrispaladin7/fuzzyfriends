@@ -41,6 +41,16 @@ class PetDelete(LoginRequiredMixin, DeleteView):
 
 
 #post controllers
+class PostCreate(LoginRequiredMixin,CreateView):
+  model = Post
+  fields = ['image','caption', 'pet']
+  success_url='/'
+
+
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
 
 def signup(request):
@@ -56,3 +66,4 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+

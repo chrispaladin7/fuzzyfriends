@@ -10,17 +10,23 @@ class Pet(models.Model):
     profile_picture = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     image = models.CharField(max_length=250)
     caption = models.TextField(max_length=250)
-    likes = models.IntegerField()
-    date = models.DateField()
+    likes = models.ManyToManyField(User, related_name='liked_posts')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    pet_id = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+
 
 class Comment(models.Model):
-    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length=250)
-    date = models.DateField()
-    likes = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='liked_comments')
