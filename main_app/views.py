@@ -26,7 +26,7 @@ def pets_list(request):
 class PetCreate(LoginRequiredMixin, CreateView):
     model = Pet
     fields = ['name', 'type_of_animal', 'breed',
-              'description', 'profile_picture']
+            'description', 'profile_picture']
     success_url = '/pets'
 
     def form_valid(self, form):
@@ -37,7 +37,7 @@ class PetCreate(LoginRequiredMixin, CreateView):
 class PetUpdate(LoginRequiredMixin, UpdateView):
     model = Pet
     fields = ['name', 'type_of_animal', 'breed',
-              'description', 'profile_picture']
+            'description', 'profile_picture']
     success_url = '/pets'
 
 
@@ -65,6 +65,21 @@ class PostCreate(LoginRequiredMixin, CreateView):
     #     user.liked_posts.add(post_id)
     #     return redirect('home', post_id=post_id)
 
+@login_required
+def posts_list(request):
+    posts = Post.objects.filter(user=request.user)
+    return render(request, 'posts/posts_list.html', {
+        'posts': posts
+    })
+
+class PostUpdate(LoginRequiredMixin, UpdateView):
+    model = Post
+    fields = ['caption']
+    success_url = '/'
+
+class PostDelete(LoginRequiredMixin, DeleteView):
+    model = Post
+    success_url = '/'
 
 def signup(request):
     error_message = ''

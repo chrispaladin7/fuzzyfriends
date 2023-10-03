@@ -27,7 +27,7 @@
         <li><a href="" class="nav-link px-2">About</a></li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'pets_list' %}" class="nav-link px-2">My Pets</a></li>
-        <li><a href="" class="nav-link px-2">My Posts</a></li>
+        <li><a href="{% url 'posts_list' %}" class="nav-link px-2">My Posts</a></li>
         <li><a href="{% url 'logout' %}" class="nav-link px-2">Log Out</a></li>
       </ul>
 
