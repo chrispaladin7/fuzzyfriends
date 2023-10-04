@@ -15,6 +15,7 @@ urlpatterns = [
   path('posts/', views.posts_list, name='posts_list'),
   # Comments
   path('comments/<int:post_id>/create', views.add_comment, name='add_comment'),
+   path('comments/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'), 
   #signup
   path('accounts/signup/', views.signup, name='signup'),
 ]

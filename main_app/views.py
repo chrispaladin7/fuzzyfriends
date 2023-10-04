@@ -1,7 +1,7 @@
 import os
 import uuid
 import boto3
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -35,9 +35,6 @@ class PetCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-
-
-        # photo-file will be the "name" attribute on the <input type="file">
         photo_file = self.request.FILES.get('profile_picture', None)
         if photo_file:
             s3 = boto3.client('s3')
@@ -132,6 +129,15 @@ def your_view(request):
 
   return render(request, 'your_template.html', context)
 
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.user == comment.user:
+        comment.delete()
+    else:
+        pass
+    return redirect('home')
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':
@@ -145,3 +151,8 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+
+
+
