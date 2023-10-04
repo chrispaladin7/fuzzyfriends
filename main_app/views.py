@@ -7,14 +7,16 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Pet, Post, User
-from .forms import PostForPetForm
+from .models import Pet, Post, Comment,User
+from .forms import PostForPetForm,CommentsForPost
 
 # Create your views here.
 def home(request):
     posts = Post.objects.all()
+    comments =Comment.objects.all()
     return render(request, 'home.html', {
-        'posts': posts
+        'posts': posts,
+        'comments': comments
     })
 
 
@@ -24,7 +26,6 @@ def pets_list(request):
     return render(request, 'pets/pets_list.html', {
         'pets': pets
     })
-
 
 class PetCreate(LoginRequiredMixin, CreateView):
     model = Pet
@@ -80,12 +81,9 @@ class PostCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
 
-
-        # photo-file will be the "name" attribute on the <input type="file">
         photo_file = self.request.FILES.get('image', None)
         if photo_file:
             s3 = boto3.client('s3')
-            # need a unique "key" for S3 / needs image file extension too
             key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
             try:
                 bucket = os.environ['S3_BUCKET']
@@ -97,10 +95,6 @@ class PostCreate(LoginRequiredMixin, CreateView):
                 print(e)
 
         return super().form_valid(form)
-
-    # def like_posts(request, post_id):
-    #     user.liked_posts.add(post_id)
-    #     return redirect('home', post_id=post_id)
 
 @login_required
 def posts_list(request):
@@ -117,6 +111,26 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/'
+
+# Comments controllers
+@login_required
+def add_comment(request,post_id):
+  form = CommentsForPost(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.post_id = post_id
+    new_comment.user_id = request.user.id
+    new_comment.save()
+  return redirect('/', post_id=post_id)
+  
+def your_view(request):
+  posts = Post.objects.all()
+
+  context = {
+      'posts': posts,
+  }
+
+  return render(request, 'your_template.html', context)
 
 def signup(request):
     error_message = ''

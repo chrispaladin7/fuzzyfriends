@@ -23,9 +23,23 @@
   {% endif %}
   <p>Total Likes: {{post.likes.count}}</p>
 
-  <p>{{ post.date }}</p>
+  <p>{{ post.created_at }}</p>
 </div>
-<hr>
+<div>
+  <form action="{% url 'add_comment' post.id %}" method="POST">
+    {% csrf_token %}
+    <textarea name="comment" id="" cols="30" rows="2"></textarea>
+    <input type="submit" class="btn" value="Add Comments">
+  </form>
+  <div style="height: 100px;" class="overflow-auto">
+  {% for comment in post.comment_set.all %}
+    <p>Comments: {{comment.comment}}</p>
+    <p>Commented by: {{comment.user}}</p>
+  {% endfor %}
+  </div>
+</div>
 {% endfor %}
+
+<hr>
 
 {% endblock %}
