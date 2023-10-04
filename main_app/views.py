@@ -118,6 +118,14 @@ class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/'
 
+def your_view(request):
+    posts = Post.objects.all()
+
+    context = {
+        'posts': posts,
+    }
+
+    return render(request, 'your_template.html', context)
 def signup(request):
     error_message = ''
     if request.method == 'POST':
