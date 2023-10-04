@@ -1,0 +1,1 @@
+web: gunicorn fuzzyfriends.wsgi
