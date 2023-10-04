@@ -1,51 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>FuzzyFriends</h1>
-<a href="{% url 'post_create' %}">Add a Post</a>
-
+<div id="post" class="text-center">
+  <h1>FuzzyFriends</h1>
+  <a class="btn btn-primary" href="{% url 'post_create' %}">Add a Post</a>
+</div> <br>
 {% for post in posts %}
-<div>
-  <img height="200px" width="200px" src="{{ post.image }}" alt="Image is unavailable">
-  <p>{{ post.caption }}</p>
+<div class="main-card container-sm">
+  <div class="row">
+    
+    <div id="col-one" class="col">
+      <h1 id="pet-title">{{post.pet}}</h1>
+      <img src="{{ post.image }}" alt="Image is unavailable">
+      <p style="font-size: 12px;">{{ post.created_at }} | Posted by {{post.user}}</p>
+      <p class="caption">{{ post.caption }}</p>
+      <form action="{% url 'add_comment' post.id %}" method="POST">
+        {% csrf_token %}
+        <textarea name="comment" id="" cols="30" rows="3"></textarea>
+        <input id="add-comment" type="submit" class="btn btn-primary" value="Add Comment">
+      </form>
+    </div>
+    <div class="col">
+      <div id="comments" class="overflow-auto">
+        <h1 id="comments-title">COMMENTS</h1>
+        {% for comment in post.comment_set.all %}
+        <p id="user-comment">{{comment.user}}: {{comment.comment}}</p>
 
-  {% if user in post.likes.all %}
-  <p>Liked</p>
-  <form action="" method="POST">
-    {% csrf_token %}
-    <button type="submit">heart❤️</button>
-  </form>
-  {% else %}
-  <p>Not Liked</p>
-  <form action="" method="POST">
-    {% csrf_token %}
-    <button type="submit">♡</button>
-  </form>
-  {% endif %}
-  <p>Total Likes: {{post.likes.count}}</p>
-
-  <p>{{ post.created_at }}</p>
-</div>
-<div>
-  <form action="{% url 'add_comment' post.id %}" method="POST">
-    {% csrf_token %}
-    <textarea name="comment" id="" cols="30" rows="2"></textarea>
-    <input type="submit" class="btn" value="Add Comments">
-  </form>
-  <div style="height: 100px;" class="overflow-auto">
-    {% for comment in post.comment_set.all %}
-    <p>Comments: {{comment.comment}}</p>
-    <p>Commented by: {{comment.user}}</p>
-    {% if user == comment.user %}
-    <form action="{% url 'delete_comment' comment.id %}" method="POST">
-      {% csrf_token %}
-      <button type="submit">Delete Comment</button>
-    </form>
-    {% endif %}
-    {% endfor %}
+        {% if user == comment.user %}
+        <form action="{% url 'delete_comment' comment.id %}" method="POST">
+          {% csrf_token %}
+          <button id="delete-comment" class="btn btn-danger" type="submit">Delete</button>
+          <hr class="hr-one">
+        </form> 
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  
   </div>
-</div>
+</div><br>
 {% endfor %}
-
-<hr>
 
 {% endblock %}
