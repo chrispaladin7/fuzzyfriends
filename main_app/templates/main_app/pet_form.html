@@ -9,11 +9,12 @@
   <h1>Add Pet</h1>
 {% endif %}
 
-<form action=" " method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
+    <input type="file" name="profile_picture">
     <input type="submit" value="Submit!" class="btn">
 </form>
 
