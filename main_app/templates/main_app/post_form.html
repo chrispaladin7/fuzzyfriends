@@ -7,12 +7,16 @@
   <h1>Add Post</h1>
 {% endif %}
 
-<form action=" " method="POST">
+
+
+<div>
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
+    <input type="file" name="image">
     <input type="submit" value="Submit!" class="btn">
-</form>
-
+  </form>
+</div>
 {% endblock %}
