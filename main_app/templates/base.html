@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,6 +12,10 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    
     <title>Document</title>
   </head>
 
@@ -24,7 +31,7 @@
             >Home</a
           >
         </li>
-        <li><a href="" class="nav-link px-2">About</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link px-2">About</a></li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'pets_list' %}" class="nav-link px-2">My Pets</a></li>
         <li><a href="{% url 'posts_list' %}" class="nav-link px-2">My Posts</a></li>

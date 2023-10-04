@@ -1,0 +1,76 @@
+body {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(163, 224, 255, 1) 47%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.main-card {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 50%;
+  margin: auto;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 3%;
+  background: #F5F5F5;
+}
+
+#col-one {
+  text-align: center;
+}
+
+#col-one > p {
+  font-size: 20px;
+}
+
+#col-one > img {
+  border-radius: 10%;
+  height: 250px;
+  width: 250px;
+}
+
+#post > a {
+  background-color: #2799c1;
+  color: #fff;
+  font-size: large;
+}
+
+#add-comment {
+  font-size: 12px;
+  margin-bottom: 2px;
+  background-color: #2799c1;
+}
+
+#delete-comment {
+  font-size: 12px;
+}
+
+#comments {
+  height: 450px;
+  width: 300px;
+  padding: 2px;
+  text-align: center;
+}
+
+.hr-one {
+  border: solid #2799c1 2px;
+}
+
+#user-comment {
+  text-align: left;
+}
+
+#comments-title{
+   font-size: 20px; 
+}
+
+#pet-title{
+    font-size: 20px;
+}
