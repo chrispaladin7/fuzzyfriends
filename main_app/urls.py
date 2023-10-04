@@ -13,7 +13,8 @@ urlpatterns = [
   path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='posts_update'),
   path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='posts_delete'),
   path('posts/', views.posts_list, name='posts_list'),
-  # path('posts/<int:post_id>/add_photo/', views.add_photo, name='add_photo'),
+  # Comments
+  path('comments/<int:post_id>/create', views.add_comment, name='add_comment'),
   #signup
   path('accounts/signup/', views.signup, name='signup'),
 ]
