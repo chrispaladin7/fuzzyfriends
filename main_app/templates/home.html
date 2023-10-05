@@ -5,32 +5,34 @@
   <a class="btn btn-primary" href="{% url 'post_create' %}">Add a Post</a>
 </div> <br>
 {% for post in posts %}
-<div class="main-card container-sm">
+<div class="main-card container">
   <div class="row">
 
     <div id="col-one" class="col">
       <h1 id="pet-title">{{post.pet}}</h1>
       <img src="{{ post.image }}" alt="Image is unavailable">
-      <p style="font-size: 12px;">{{ post.created_at }} | Posted by {{post.user}}</p>
+      <p style="font-size: 12px;">{{ post.created_at }} | Posted by {{post.user}} | <span style="font-weight: bold;">Likes: {{post.likes.count}}</span></p>
+      <article id="caption-article">
       <p class="caption">{{ post.caption }}</p>
+      </article>
       <form action="{% url 'add_comment' post.id %}" method="POST">
         {% csrf_token %}
-        <textarea name="comment" id="" cols="30" rows="3" placeholder="Add Comment..."></textarea>
-        <input id="add-comment" type="submit" class="btn btn-primary" value="Add Comment">
+        <textarea name="comment" id="" cols="30" rows="3" placeholder="Add Comment..."></textarea><br>
+        <input id="add-comment" type="submit" class="btn btn-primary" value="Post">
       </form>
-
-      {% if user in post.likes.all %}
-      <form action="{% url 'posts_unlike' post.id %}" method="POST">
-        {% csrf_token %}
-        <small>{{post.likes.count}}</small> <button type="submit">❤️</button>
-      </form>
-      {% else %}
-      <form action="{% url 'posts_like' post.id %}" method="POST">
-        {% csrf_token %}
-        <small> {{post.likes.count}}</small><button type="submit">♡</button>
-      </form>
-      {% endif %}
-
+      <div id="likes-div">
+        {% if user in post.likes.all %}
+        <form action="{% url 'posts_unlike' post.id %}" method="POST">
+          {% csrf_token %}
+        <button id="like-btn" type="submit">❤️</button>
+        </form>
+        {% else %}
+        <form action="{% url 'posts_like' post.id %}" method="POST">
+          {% csrf_token %}
+        <button id="unlike-btn" type="submit">🤍</button>
+        </form>
+        {% endif %}
+      </div>
     </div>
     <div class="col">
       <div id="comments" class="overflow-auto">

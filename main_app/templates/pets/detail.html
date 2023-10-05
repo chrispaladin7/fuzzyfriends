@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1><span class="teal-text">{{ pet.name }}</span>'s Detail</h1>
 
-<div class="card">
+
+<div id="pet-details" class="card">
+<h1><span class="teal-text">{{ pet.name }}</span>'s Detail</h1>    
     <div class="card-content">
-        <img src="{{ pet.profile_picture }}" alt="profile-picture">
+        <img id="details-img" src="{{ pet.profile_picture }}" alt="profile-picture">
         <p>Type: {{ pet.type_of_animal}}</p>
         <p>Breed: {{ pet.breed }}</p>
-        <p>Description: {{ pet.description | linebreaks }}</p>
+        <p>Description: {{ pet.description }}</p>
     </div>
     <div class="card-action">
         <a class="btn btn-primary" href="{% url 'pets_update' pet.id %}">Edit</a>

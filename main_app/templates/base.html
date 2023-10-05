@@ -21,21 +21,21 @@
 
   <body>
     <header
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+      class="bg-dark d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
     >
       <div class="col-md-3 mb-2 mb-md-0"></div>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <a href="{% url 'home' %}" class="nav-link px-2 link-secondary"
+          <a href="{% url 'home' %}" class="nav-link px-2 text-white "
             >Home</a
           >
         </li>
-        <li><a href="{% url 'about' %}" class="nav-link px-2">About</a></li>
+        <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">About</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'pets_list' %}" class="nav-link px-2">My Pets</a></li>
-        <li><a href="{% url 'posts_list' %}" class="nav-link px-2">My Posts</a></li>
-        <li><a href="{% url 'logout' %}" class="nav-link px-2">Log Out</a></li>
+        <li><a href="{% url 'pets_list' %}" class="nav-link px-2 text-white">My Pets</a></li>
+        <li><a href="{% url 'posts_list' %}" class="nav-link px-2 text-white">My Posts</a></li>
+        <li><a href="{% url 'logout' %}" class="nav-link px-2 text-white">Log Out</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
@@ -48,8 +48,8 @@
       </div>
     </header>
     <main>{% block content %} {% endblock %}</main>
-    <footer class="py-3 my-4">
-      <p class="text-center text-muted">© 2023 FuzzyFriends</p>
+    <footer class="bg-info text-center text-lg-start fixed-bottom bg-dark">
+      <p class="text-center text-white">© 2023 FuzzyFriends</p>
     </footer>
   </body>
 </html>
