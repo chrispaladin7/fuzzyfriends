@@ -1,22 +1,22 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<a class="btn btn-primary" href="{% url 'post_create' %}">Add a Post</a>
+<div class="post-list-header">
+  <h1>My Posts</h1>
+  <a class="btn btn-primary general-btn" href="{% url 'post_create' %}">Add a Post</a>
+</div>
 
-<h1>My Posts</h1>
+<div id="post-flex" class="container"">
+  {% for post in posts %}
 
-{% for post in posts %}
-<div id="post-flex">
   <div id="post-page" class="card">
-  <img src=" {{ post.image }}" alt="Image is unavailable">
+    <img style="height: 200px" src=" {{ post.image }}" alt="Image is unavailable" />
     <p>{{ post.caption }}</p>
     <p>{{ post.date }}</p>
-    <a class="btn btn-primary" href="{% url 'posts_update' post.id %}">Edit</a>
+    <a class="btn btn-primary general-btn" href="{% url 'posts_update' post.id %}">Edit</a>
     <a class="btn btn-danger" href="{% url 'posts_delete' post.id %}">Delete</a>
   </div>
-</div><br>
+  {% endfor %}
+</div>
 
-
-{% endfor %}
 
 {% endblock %}
