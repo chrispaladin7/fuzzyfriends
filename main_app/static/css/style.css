@@ -1,3 +1,4 @@
+
 body {
   background: rgb(255, 255, 255);
   background: radial-gradient(
@@ -32,8 +33,8 @@ body {
 
 #col-one > img {
   border-radius: 10%;
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 300px;
 }
 
 #post > a {
@@ -41,6 +42,7 @@ body {
   color: #fff;
   font-size: large;
 }
+
 
 #add-comment {
   font-size: 12px;
@@ -74,3 +76,92 @@ body {
 #pet-title{
     font-size: 20px;
 }
+
+#programmers img{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    margin: 20px 0;
+}
+
+#programmers{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#post-page{
+    padding: 5px;
+    border: 2px solid #000;
+    height: 320px;
+    width: 250px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    text-align: center;
+}
+
+
+
+#pet-list{
+    padding: 5px;
+    border: 2px solid #000;
+    height: 330px;
+    width: 250px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    text-align: center;
+}
+
+#sign-up{
+    padding: 5px;
+    width: 50%;
+    margin: auto;
+    border: #000 solid 2px;
+    text-align: center;
+}
+
+#log-in{
+    padding: 5px;
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#delete-confirm{
+  padding: 5px;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#add-pet-form{
+  padding: 5px;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#edit-pet-form{
+  padding: 5px;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+

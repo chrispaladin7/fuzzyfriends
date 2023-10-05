@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<a href="{% url 'post_create' %}">Add a Post</a>
+<a class="btn btn-primary" href="{% url 'post_create' %}">Add a Post</a>
 
 <h1>My Posts</h1>
 
 {% for post in posts %}
-<div>
-  <img height="200px" width="200px" src="{{ post.image }}" alt="Image is unavailable">
-  <p>{{ post.caption }}</p>
-  <p>{{ post.date }}</p>
-  <a href="{% url 'posts_update' post.id %}">Edit</a>
-  <a href="{% url 'posts_delete' post.id %}">Delete</a>
-</div>
-<hr> 
+<div id="post-flex">
+  <div id="post-page" class="card">
+  <img src=" {{ post.image }}" alt="Image is unavailable">
+    <p>{{ post.caption }}</p>
+    <p>{{ post.date }}</p>
+    <a class="btn btn-primary" href="{% url 'posts_update' post.id %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'posts_delete' post.id %}">Delete</a>
+  </div>
+</div><br>
+
 
 {% endfor %}
 

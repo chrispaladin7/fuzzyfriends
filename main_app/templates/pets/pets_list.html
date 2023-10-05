@@ -2,21 +2,17 @@
 {% block content %}
 
 <h1>List of Pets</h1>
+<div>
+  <a class="btn btn-primary" href="{% url 'pets_create' %}">Add a pet</a>
+</div>
 
 {% for pet in pets %}
-<div>
+<div id="pet-list" class="card">
   <p>{{ pet.name }}</p>
-  <p>Type: {{ pet.type_of_animal }}</p>
-  <p>Breed: {{ pet.breed }}</p>
-  <p>description: {{ pet.description }}</p>
-  <p>Profile Picture: <img height="200px" width="200px" src="{{ pet.profile_picture }}" alt="Image is unavailable"> </p>
-  <a href="{% url 'pets_update' pet.id %}">Edit</a>
-  <a href="{% url 'pets_delete' pet.id %}">Delete</a>
+  <img style="height: 200px;" src="{{ pet.profile_picture }}" alt="Image is unavailable">
+  <a class="btn btn-primary" href="{% url 'detail' pet.id %}">View Details</a>
 </div>
-<br> <hr>  
+<br>  
 
 {% endfor %}
-<div>
-  <a href="{% url 'pets_create' %}">Add a pet</a>
-</div>
 {% endblock %}

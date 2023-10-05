@@ -1,22 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% if object %}
+
+
+
+
+<div id="add-pet-form" class="card">
+
+  {% if object %}
   <h1>Edit Post</h1>
 {% else %}
   <h1>Add Post</h1>
 {% endif %}
-
-
-
-<div>
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {{ form.as_table }}
     </table>
-    <input type="file" name="image">
-    <input type="submit" value="Submit!" class="btn">
+    <input type="file" name="image"> <br>
+    <input class="btn btn-primary" type="submit" value="Submit!" class="btn">
   </form>
 </div>
 {% endblock %}

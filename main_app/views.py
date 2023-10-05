@@ -52,12 +52,19 @@ class PetCreate(LoginRequiredMixin, CreateView):
                 print(e)
 
         return super().form_valid(form)
+    
+@login_required
+def pets_detail(request, pet_id):
+  pet = Pet.objects.get(id=pet_id)
+  return render(request, 'pets/detail.html', {
+    'pet': pet
+  })
 
 
 class PetUpdate(LoginRequiredMixin, UpdateView):
     model = Pet
     fields = ['name', 'type_of_animal', 'breed',
-            'description', 'profile_picture']
+            'description']
     success_url = '/pets'
 
 

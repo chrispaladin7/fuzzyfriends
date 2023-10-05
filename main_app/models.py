@@ -22,6 +22,9 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-created_at']
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -30,3 +33,6 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='liked_comments')
+
+    class Meta:
+        ordering = ['-created_at']
