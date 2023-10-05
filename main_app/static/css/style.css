@@ -124,12 +124,16 @@ body {
 }
 
 #sign-up {
-  padding: 5px;
+  padding: 10px;
   width: 50%;
   margin: auto;
   border: #000 solid 2px;
-  text-align: center;
 }
+
+#sign-up input{
+  width: 100%;
+}
+
 
 #log-in {
   padding: 5px;
@@ -140,6 +144,11 @@ body {
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
+
+#log-in input{
+  width: 100%;
+}
+
 
 #delete-confirm {
   padding: 5px;
@@ -161,14 +170,22 @@ body {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
+#add-pet-form input{
+  width: 100%;
+}
+
 #edit-pet-form {
   padding: 5px;
-  width: 30%;
+  width: 40%;
   margin: auto;
   text-align: center;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#edit-pet-form input{
+  width: 100%;
 }
 
 #like-btn {
@@ -201,7 +218,7 @@ body {
 
 #details-img {
   height: 300px;
-  width: 400px;
+  width: 350px;
 }
 
 .flex-pets {
@@ -239,9 +256,13 @@ body {
   font-size: 20px;
 }
 
-li:hover{
+header li:hover{
   background-color: #2799c1;
   color: #000;
   border-radius: 25%;
+}
+
+span.helptext li{
+  list-style: none;
 }
 
