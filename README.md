@@ -3,6 +3,9 @@
 
 
 # FUZZYFRIENDS
+
+<img src='https://i.imgur.com/kkwyyLs.jpg'>
+
 ###### Created by 
 Artin Simonian, 
 Christus Martey, 
