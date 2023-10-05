@@ -12,7 +12,7 @@
         <p>Description: {{ pet.description }}</p>
     </div>
     <div class="card-action">
-        <a class="btn btn-primary" href="{% url 'pets_update' pet.id %}">Edit</a>
+        <a class="btn btn-primary general-btn" href="{% url 'pets_update' pet.id %}">Edit</a>
         <a class="btn btn-danger" href="{% url 'pets_delete' pet.id %}">Delete</a>
     </div>
 </div>
