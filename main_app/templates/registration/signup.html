@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div id="sign-up" class="card">
 <h1>Sign Up</h1>
 
 <p class="red-text">{{ error_message }}</p>
 
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="Sign Up">
+  {{ form.as_table }} <br>
+  <input type="submit" class="btn btn-primary" value="Sign Up">
 </form>
-
+</div>
 {% endblock %}
